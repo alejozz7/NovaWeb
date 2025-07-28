@@ -2,91 +2,84 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaWeb - Creación de páginas web</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVAWEB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
     }
+
     body {
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      background-image: url('/mnt/data/A_digital_screenshot_of_a_landing_page_for_a_web_d.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
     }
-    header {
+
+    .container {
+      height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem;
-    }
-    header img {
-      height: 60px;
-    }
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-    }
-    .hero a {
-      background: #00aaff;
-      padding: 1rem 2rem;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .hero a:hover {
-      background: #0077cc;
-    }
-    .section-img {
-      padding: 4rem 2rem;
-      display: flex;
+      flex-direction: column;
       justify-content: center;
-      background: #111;
-    }
-    .section-img img {
-      width: 90%;
-      max-width: 900px;
-      border-radius: 12px;
-    }
-    footer {
+      align-items: center;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #666;
+    }
+
+    .logo {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 40px;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .logo:hover {
+      transform: rotateY(20deg) rotateX(10deg) scale(1.05);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 25px;
+      font-size: 2rem;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo-novaweb.png" alt="Logo NovaWeb">
-  </header>
+  <div class="container">
+    <div class="logo">
+      <img src="/mnt/data/704bfc6b-53a4-4f4d-a0dd-402cc96ba34d.png" alt="NovaWeb Logo" />
+    </div>
 
-  <section class="hero">
-    <h1>CREACIÓN DE PÁGINAS WEB</h1>
-    <p>Tu negocio online empieza aquí. Diseños modernos, rápidos y funcionales.</p>
-    <a href="#">COMENZAR</a>
-  </section>
-
-  <section class="section-img">
-    <img src="ejemplo-novaweb.png" alt="Ejemplo de diseño NovaWeb">
-  </section>
-
-  <footer>
-    &copy; 2025 NovaWeb. Todos los derechos reservados.
-  </footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+  </div>
 </body>
 </html>
