@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NOVAWEB</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,65 +14,140 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      background-image: url('/mnt/data/A_digital_screenshot_of_a_landing_page_for_a_web_d.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+      font-family: 'Anton', sans-serif;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
       overflow: hidden;
+      position: relative;
     }
 
-    .container {
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-image: url('/mnt/data/61d1adb0-bfb1-4168-9fd2-bd46f96022cf.png'); /* FONDO CAMBIADO */
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+
+    .section {
+      display: none;
+      height: 100vh;
+      width: 100vw;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       text-align: center;
     }
 
-    .logo {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 40px;
-      transform-style: preserve-3d;
-      transition: transform 0.3s ease;
+    .section.active {
+      display: flex;
     }
 
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    .logo:hover {
-      transform: rotateY(20deg) rotateX(10deg) scale(1.05);
+    .custom-character {
+      background: radial-gradient(circle, #000000 60%, #444);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 0 0 15px white;
+      box-shadow: 0 0 25px #fff;
+    }
+
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #d3d3d3;
+      text-shadow: 0 0 10px #000;
     }
 
     .social-icons {
-      display: flex;
-      gap: 25px;
-      font-size: 2rem;
-      margin-top: 40px;
-      justify-content: center;
+      margin: 20px 0;
     }
 
     .social-icons a {
-      color: #000;
-      text-decoration: none;
-      transition: color 0.3s;
+      margin: 0 10px;
+      color: white;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: #555;
+      transform: scale(1.2);
+      color: #ccc;
+    }
+
+    .start-button {
+      background-color: white;
+      color: black;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .start-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .plan {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 30px;
+      margin: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .plan h3 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .plan p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    .spin {
+      animation: spin 5s linear infinite;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-      <img src="/mnt/data/704bfc6b-53a4-4f4d-a0dd-402cc96ba34d.png" alt="NovaWeb Logo" />
+  <div class="background-image"></div>
+
+  <!-- INICIO -->
+  <section id="inicio" class="section active">
+    <div class="logo-section">
+      <div class="custom-character" id="customChar">N</div>
+      <div class="logo-text">NOVAWEB</div>
     </div>
 
     <div class="social-icons">
@@ -80,6 +156,62 @@
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-pinterest"></i></a>
     </div>
-  </div>
+
+    <button class="start-button" onclick="mostrarSeccion('nosotros')">Comenzar</button>
+  </section>
+
+  <!-- NOSOTROS / PLANES -->
+  <section id="nosotros" class="section">
+    <div class="logo-text">Nuestros Planes</div>
+    <div class="plan">
+      <h3>Plan Normal</h3>
+      <p>$100.000 COP</p>
+    </div>
+    <div class="plan">
+      <h3>Plan Profesional</h3>
+      <p>$300.000 COP</p>
+    </div>
+  </section>
+
+  <script>
+    let char;
+
+    window.onload = () => {
+      char = document.getElementById('customChar');
+      if (!char) return;
+      char.classList.add('spin');
+
+      document.addEventListener('mousemove', (e) => {
+        if (!char) return;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const percentX = (e.clientX - centerX) / centerX;
+        const percentY = (e.clientY - centerY) / centerY;
+
+        const rotateY = percentX * 15;
+        const rotateX = -percentY * 15;
+
+        char.style.animation = 'none';
+        char.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      document.addEventListener('mouseleave', () => {
+        if (!char) return;
+        char.classList.add('spin');
+      });
+
+      document.addEventListener('mouseenter', () => {
+        if (!char) return;
+        char.classList.remove('spin');
+        char.style.transform = '';
+      });
+    };
+
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      const newSection = document.getElementById(id);
+      if (newSection) newSection.classList.add('active');
+    }
+  </script>
 </body>
 </html>
